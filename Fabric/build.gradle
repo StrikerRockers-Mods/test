@@ -4,9 +4,8 @@ plugins {
     id 'maven-publish'
     id 'fabric-loom'
 }
-base {
-    archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
-}
+
+archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
 
 repositories {
     maven { url "https://maven.terraformersmc.com/releases/" }
