@@ -56,7 +56,7 @@ subprojects {
     }
 }
 
-task setupGithubActions() {
+tasks.register('setupGithubActions') {
     doLast {
         exec {
             commandLine "sh", "-c", "echo version=${rootProject.version} >> \$GITHUB_OUTPUT"
