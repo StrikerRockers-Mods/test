@@ -59,13 +59,13 @@ subprojects {
 task setupGithubActions() {
     doLast {
         exec {
-            commandLine "echo", "version=${rootProject.version}", ">> $GITHUB_OUTPUT"
+            commandLine "echo", "version=${rootProject.version}", ">> \$GITHUB_OUTPUT"
         }
         exec {
-            commandLine "echo", "mod_name=${rootProject.mod_name}", ">> $GITHUB_OUTPUT"
+            commandLine "echo", "mod_name=${rootProject.mod_name}", ">> \$GITHUB_OUTPUT"
         }
         exec {
-            commandLine "echo", "minecraft_version=${rootProject.minecraft_version}", ">> $GITHUB_OUTPUT"
+            commandLine "echo", "minecraft_version=${rootProject.minecraft_version}", ">> \$GITHUB_OUTPUT"
         }
     }
 }
