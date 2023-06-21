@@ -1,0 +1,32 @@
+name: build
+on:
+  workflow_call:
+    inputs:
+      java-version:
+        type: string
+        default: 17
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: "Set up JDK"
+        uses: actions/setup-java@v2
+        with: { distribution: "temurin", java-version: "${{ inputs.java-version }}" }
+      - name: Build with Gradle
+        uses: burrunan/gradle-cache-action@v1
+        id: build
+        with:
+          arguments: "setupGithubActions build"
+          gradle-version: "wrapper"
+      - name: Use prior output
+        run: echo "Mod Name  ${{ steps.build.outputs.mod_name }}"
+      - name: Mc version
+        run: echo "MC Version  ${{ steps.build.outputs.minecraft_version }}"
+      - name : Version
+        run: echo "Version  ${{ steps.build.outputs.version }}"
